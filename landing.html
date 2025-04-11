@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlairBIM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Mono&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-family: 'JetBrains Mono';
+    }
+    html {
+      font-family: var(--font-family, 'JetBrains Mono'), monospace;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%232C2C2C" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      background-repeat: repeat;
+      background-size: 40px 40px;
+    }
+    .hover-code-style:hover {
+      background-color: #1f1f1f;
+      border-color: #3a86ff;
+      color: #3a86ff;
+    }
+    .highlight {
+      border-color: #3a86ff !important;
+      background-color: #1f1f1f !important;
+      color: #3a86ff !important;
+    }
+    .desc-item {
+      cursor: crosshair;
+      animation: fade-in 0.5s ease-out;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#0D0D0D] text-white flex flex-col items-center justify-start min-h-screen">
+  <!-- Language Switcher + Font Toggle -->
+  <div class="flex justify-end w-full mb-4 text-sm text-gray-400 gap-3 px-6">
+    <button onclick="setLanguage('ru')" class="border border-gray-600 px-2 py-1 rounded text-xs hover:bg-white hover:text-black">RU</button>
+    <button onclick="setLanguage('en')" class="border border-gray-600 px-2 py-1 rounded text-xs hover:bg-white hover:text-black">EN</button>
+    <button onclick="cycleFont()" class="border border-gray-600 px-2 py-1 rounded text-xs hover:bg-white hover:text-black">Font</button>
+  </div>
+
+  <!-- About Section Title and Text (above hero) -->
+  <div class="w-full max-w-5xl pr-2 flex justify-end">
+    <pre class="text-sm text-gray-500 bg-[#111] p-4 rounded mb-6 overflow-x-auto"
+          data-ru="// FlairBIM — независимый инженерно-технологический проект на стыке BIM, HVAC и программирования.
+// Миссия: внедрять автоматизацию, точность и стиль в проектирование."
+          data-en="// FlairBIM is an independent engineering-tech project at the intersection of BIM, HVAC and coding.
+// Mission: to integrate automation, accuracy, and style into design.">
+// FlairBIM — независимый инженерно-технологический проект на стыке BIM, HVAC и программирования.
+// Миссия: внедрять автоматизацию, точность и стиль в проектирование.</pre>
+  </div>
+
+  <!-- Hero Title -->
+  <div class="flex flex-col items-center text-center">
+    <h1 class="text-5xl font-bold tracking-tight">FlairBIM</h1>
+    <p class="mt-2 text-gray-400 text-lg"
+       data-ru="Цифровое проектирование со стилем"
+       data-en="Digital Engineering with Flair">
+       Digital Engineering with Flair
+    </p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="mt-8 flex flex-wrap justify-center gap-6">
+    <a href="#bim" class="flex items-center justify-center gap-2 px-6 py-3 border border-white rounded text-sm hover:bg-white hover:text-black transition" onmouseover="highlightDesc(0)" onmouseout="clearHighlight()">
+      Flair : BIM
+    </a>
+    <a href="#hvac" class="flex items-center justify-center gap-2 px-6 py-3 border border-white rounded text-sm hover:bg-white hover:text-black transition" onmouseover="highlightDesc(1)" onmouseout="clearHighlight()">
+      Flair : HVAC
+    </a>
+    <a href="#code" class="flex items-center justify-center gap-2 px-6 py-3 border border-white rounded text-sm hover:bg-white hover:text-black transition" onmouseover="highlightDesc(2)" onmouseout="clearHighlight()">
+      Flair : Code
+    </a>
+  </div>
+
+  <!-- Labels under buttons -->
+  <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl text-center">
+    <p class="desc-item text-sm text-gray-400 border border-transparent px-4 py-3 rounded transition hover-code-style"
+       data-ru="Моделирование, координация, автоматизация проектирования"
+       data-en="Modeling, coordination, design automation">
+       Моделирование, координация, автоматизация проектирования
+    </p>
+    <p class="desc-item text-sm text-gray-400 border border-transparent px-4 py-3 rounded transition hover-code-style"
+       data-ru="Инженерные системы, шаблоны, расчёты, спецификации"
+       data-en="HVAC systems, templates, calculations, specifications">
+       Инженерные системы, шаблоны, расчёты, спецификации
+    </p>
+    <p class="desc-item text-sm text-gray-400 border border-transparent px-4 py-3 rounded transition hover-code-style"
+       data-ru="Скрипты, аддоны, Revit API, AI и NER-инструменты"
+       data-en="Scripts, add-ons, Revit API, AI & NER tools">
+       Скрипты, аддоны, Revit API, AI и NER-инструменты
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-700 pt-6 text-sm text-gray-500 text-center mt-auto">
+    <p data-ru="© 2025 FlairBIM — независимый инженерный проект" data-en="© 2025 FlairBIM — independent engineering project">
+      © 2025 FlairBIM — независимый инженерный проект
+    </p>
+    <p class="mt-2">
+      <a href="mailto:hello@flairbim.com" class="hover:underline">hello@flairbim.com</a>
+      • Telegram • GitHub
+    </p>
+  </footer>
+  <script>
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-ru], [data-en]').forEach(el => {
+        const newText = el.getAttribute(`data-${lang}`);
+        if (!newText) return;
+        if (el.tagName === 'PRE') {
+          el.textContent = newText.replace(/\n/g, '\n');
+        } else {
+          el.textContent = newText;
+        }
+      });
+    }
+
+    function highlightDesc(index) {
+      const items = document.querySelectorAll('.desc-item');
+      items.forEach((el, i) => {
+        el.classList.toggle('highlight', i === index);
+      });
+    }
+
+    function clearHighlight() {
+      document.querySelectorAll('.desc-item').forEach(el => {
+        el.classList.remove('highlight');
+      });
+    }
+
+    function cycleFont() {
+      const fonts = [
+        "'JetBrains Mono'",
+        "'Fira Code'",
+        "'IBM Plex Mono'"
+      ];
+      const html = document.documentElement;
+      const current = getComputedStyle(html).getPropertyValue('--font-family').trim().replace(/['"]/g, '');
+      let index = fonts.findIndex(f => f.includes(current));
+      if (index === -1) index = 0;
+      const nextFont = fonts[(index + 1) % fonts.length];
+      html.style.setProperty('--font-family', nextFont);
+    }
+  </script>
+</body>
+</html>
