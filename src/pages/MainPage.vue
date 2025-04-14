@@ -10,11 +10,11 @@
   
   <script setup lang="ts">
 	import { ref } from 'vue'
-  import Header from './Header.vue'
-	import LanguageSwitcher from './LanguageSwitcher.vue'
-	import Hero from './Hero.vue'
-  import Navigation from './Navigation.vue'
-  import Footer from './Footer.vue'
+  import Header from '../components/Header.vue'
+	import LanguageSwitcher from '../components/LanguageSwitcher.vue'
+	import Hero from '../components/Hero.vue'
+  import Navigation from '../components/Navigation.vue'
+  import Footer from '../components/Footer.vue'
   
   const currentLang = ref<'ru' | 'en'>('en')
   
