@@ -1,0 +1,27 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "litestar[standard,cli]",
+    "ezdxf",
+    "passlib[bcrypt]",
+    "python-jose",
+    "pydantic[email]",
+    "sqlalchemy",
+    "python-multipart",
+    "python-dotenv>=1.1.0",
+    "pydantic-settings>=2.8.1",
+    "boto3>=1.37.29",
+    "bcrypt==4.0.1",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["app"]

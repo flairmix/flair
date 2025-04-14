@@ -2,7 +2,7 @@
 
 	<div class="mt-8 flex flex-wrap justify-center gap-10">
 
-		<div class="flex flex-col items-center w-[320px]">
+		<div class="flex flex-col  items-center w-[320px]">
 			<router-link 
 				to="/blog/bim"
 				class="peer px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-black transition cursor-pointer">

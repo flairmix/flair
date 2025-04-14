@@ -8,9 +8,9 @@
         • 
         <a href="mailto:hello@flairbim.com" class="hover:underline">hello@flairbim.com</a>
         • 
-        <a href="#" onclick="window.open('https://t.me/flairbim', '__blank')" class="hover:underline">Telegram</a>
+        <a href="https://t.me/flairbim" onclick="window.open('https://t.me/flairbim', '__blank')" class="hover:underline">Telegram</a>
         • 
-        <a href="#" onclick="window.open('https://github.com/flairmix', '__blank')" class="hover:underline">GitHub</a>
+        <a href="https://github.com/flairmix" onclick="window.open('https://github.com/flairmix', '__blank')" class="hover:underline">GitHub</a>
          • 
       </p>
     </footer>

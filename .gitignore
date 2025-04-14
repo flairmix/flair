@@ -25,3 +25,9 @@ dist-ssr
 
 .vscode
 
+.env*
+.venv
+.python-version
+__pycache__
+
+*.db
