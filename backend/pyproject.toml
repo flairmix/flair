@@ -1,9 +1,10 @@
 [project]
 name = "backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "Backend for Flair"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
+
 dependencies = [
     "litestar[standard,cli]",
     "ezdxf",
@@ -16,6 +17,7 @@ dependencies = [
     "pydantic-settings>=2.8.1",
     "boto3>=1.37.29",
     "bcrypt==4.0.1",
+    "uvicorn[standard]"
 ]
 
 [build-system]
