@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings
 import os
 import logging
-from pydantic import BaseSettings, PostgresDsn
+from pydantic import PostgresDsn
 
 
 class Settings(BaseSettings):
