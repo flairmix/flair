@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
 
-    DATABASE_URL: str = "sqlite:///./app.db"  # fallback, если PostgreSQL не используется
+    # DATABASE_URL: str = "sqlite:///./app.db"  # fallback, если PostgreSQL не используется
 
     @property
     def postgres_url(self) -> PostgresDsn:
@@ -27,11 +27,11 @@ class Settings(BaseSettings):
     VITE_API_BASE_URL: str
 
     # === MinIO / S3 ===
-    S3_ENDPOINT_URL: str = "http://minio:9000"
-    S3_ACCESS_KEY: str
-    S3_SECRET_KEY: str
-    S3_REGION: str = "us-east-1"
-    S3_BUCKET_NAME: str = "files"
+    # S3_ENDPOINT_URL: str = "http://minio:9000"
+    # S3_ACCESS_KEY: str
+    # S3_SECRET_KEY: str
+    # S3_REGION: str = "us-east-1"
+    # S3_BUCKET_NAME: str = "files"
 
     class Config:
         env_file = f".env.{os.getenv('ENV', 'dev')}"
