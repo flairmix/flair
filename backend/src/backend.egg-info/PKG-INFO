@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: backend
+Version: 0.1.0
+Summary: Backend for Flair
+Requires-Python: >=3.11
+Requires-Dist: litestar[cli,standard]
+Requires-Dist: ezdxf
+Requires-Dist: passlib[bcrypt]
+Requires-Dist: python-jose
+Requires-Dist: pydantic[email]
+Requires-Dist: sqlalchemy
+Requires-Dist: python-multipart
+Requires-Dist: python-dotenv>=1.1.0
+Requires-Dist: pydantic-settings>=2.8.1
+Requires-Dist: boto3>=1.37.29
+Requires-Dist: bcrypt==4.0.1
+Requires-Dist: uvicorn[standard]
+Requires-Dist: psycopg2-binary

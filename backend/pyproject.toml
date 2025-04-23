@@ -16,7 +16,8 @@ dependencies = [
     "pydantic-settings>=2.8.1",
     "boto3>=1.37.29",
     "bcrypt==4.0.1",
-    "uvicorn[standard]"
+    "uvicorn[standard]",
+    "psycopg2-binary",
 ]
 
 [build-system]

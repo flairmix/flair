@@ -44,6 +44,6 @@ settings = Settings()
 logger = logging.getLogger("config")
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
-logger.info(
-    f"[CONFIG] ENV: {os.getenv('ENV', 'dev')} | DEBUG: {settings.DEBUG} | DB: {settings.DATABASE_URL} | TOKEN_EXP: {settings.TOKEN_EXPIRE_HOURS}h"
-)
+# logger.info(
+#     f"[CONFIG] ENV: {os.getenv('ENV', 'dev')} | DEBUG: {settings.DEBUG} | DB: {settings.DATABASE_URL} | TOKEN_EXP: {settings.TOKEN_EXPIRE_HOURS}h"
+# )

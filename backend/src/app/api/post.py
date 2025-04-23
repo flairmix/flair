@@ -6,9 +6,9 @@ from litestar.di import Provide
 from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy.orm import Session
 from datetime import datetime, timezone
-from app.domain.models import Post as PostModel
+from ..domain.models import Post as PostModel
 
-from app.services.db import get_db_session
+from ..services.db import get_db_session
 
 
 class PostDTO(BaseModel):

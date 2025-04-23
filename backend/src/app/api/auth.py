@@ -4,8 +4,8 @@ from litestar.di import Provide
 from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
-from app.services.db import get_db_session
-from app.services import auth_service as auth
+from ..services.db import get_db_session
+from ..services import auth_service as auth
 
 class RegisterDTO(BaseModel):
     email: EmailStr

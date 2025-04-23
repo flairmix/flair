@@ -1,11 +1,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
-from app.domain.models import Base
-from app.services.config import settings
+from ..domain.models import Base
+from .config import settings
 
-DATABASE_URL = settings.DATABASE_URL
+DATABASE_URL = settings.postgres_url
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+engine = create_engine(DATABASE_URL)
+
+# engine = create_engine(conn_string, connect_args=conn_args,pool_pre_ping=True,pool_recycle=300)
+
 SessionLocal = sessionmaker(bind=engine)
 
 # Вызывается при старте

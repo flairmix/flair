@@ -4,7 +4,7 @@ from litestar.datastructures import UploadFile
 from litestar.params import Body, Parameter
 from litestar.status_codes import HTTP_201_CREATED, HTTP_200_OK
 
-from app.services.storage_service import (
+from ..services.storage_service import (
     upload_file,
     download_file,
     generate_presigned_url,
