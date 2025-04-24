@@ -20,7 +20,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 def create_access_token(user_id: int) -> str:
     expire = datetime.now(timezone.utc) + timedelta(hours=settings.TOKEN_EXPIRE_HOURS)
     payload = {"sub": str(user_id), "exp": expire}
-    return jwt.encode(payload, settings.JWT_SECRET, algorithm="HS256")
+    return jwt.encode(payload, settings.APP_SECRET_KEY, algorithm="HS256")
 
 
 def get_user_by_email(email: str, db: Session) -> User | None:
