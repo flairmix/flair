@@ -11,7 +11,9 @@ services:
       - .env
     depends_on:
       - db
-
+    networks:
+      - postgres
+      
   frontend:
     build:
       context: ./frontend
@@ -23,6 +25,7 @@ services:
       - .env
     command: >
       sh -c "npm run dev -- --host 0.0.0.0"
+
 
   db:
     image: postgres:15

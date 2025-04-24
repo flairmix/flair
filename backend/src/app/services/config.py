@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     DB_USER: str
     DB_PASSWORD: str
     DB_NAME: str
-    DB_HOST: str = "localhost"
+    DB_HOST: str = "db"
     DB_PORT: int = 5432
 
     # DATABASE_URL: str = "sqlite:///./app.db"  # fallback, если PostgreSQL не используется

@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+# unused images clean
+docker system prune -f
+
+# Очистка build cache Docker
+docker builder prune -f
+
+# Пересборка образов без использования кэша и запуск контейнеров
+docker compose build --no-cache
+docker compose up --force-recreate --no-deps -d

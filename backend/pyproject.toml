@@ -5,6 +5,7 @@ description = "Backend for Flair"
 requires-python = ">=3.11"
 
 dependencies = [
+    "uvicorn[standard]",
     "litestar[standard,cli]",
     "ezdxf",
     "passlib[bcrypt]",
@@ -16,7 +17,6 @@ dependencies = [
     "pydantic-settings>=2.8.1",
     "boto3>=1.37.29",
     "bcrypt==4.0.1",
-    "uvicorn[standard]",
     "psycopg2-binary",
 ]
 
