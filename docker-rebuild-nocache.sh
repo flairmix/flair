@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+docker compose down --volumes
+
 # unused images clean
 docker system prune -f
 

@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: be
     build:
       context: ./backend
     volumes:
@@ -13,19 +14,20 @@ services:
       - db
     networks:
       - postgres
-      
+
   frontend:
+    container_name: fe
     build:
       context: ./frontend
     volumes:
       - ./frontend:/app
     ports:
       - "5173:5173"
+    command: sh -c "npm run dev -- --host 0.0.0.0"
     env_file:
       - .env
-    command: >
-      sh -c "npm run dev -- --host 0.0.0.0"
-
+    networks:
+      - postgres
 
   db:
     image: postgres:15
