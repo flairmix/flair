@@ -3,8 +3,9 @@
 
 ## BIM | HVAC | Code
 
-http://flairbim.com:9000
-http://flairbim.com:8080
+
+https://api.flairbim.com/schema/swagger
+
 
 
 ```
