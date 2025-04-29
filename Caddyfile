@@ -1,17 +1,16 @@
+{
+    email d9067246810@gmail.com
+}
+
 flairbim.com {
     reverse_proxy frontend:5173
-    tls d9067246810@gmail.com
 }
 
 api.flairbim.com {
     reverse_proxy backend:8000
-    tls d9067246810@gmail.com
-    route /schema/swagger/* {
-        reverse_proxy backend:8000/schema/swagger/
-    }
 }
 
 pgadmin.flairbim.com {
     reverse_proxy pgadmin:8080
-    tls d9067246810@gmail.com
 }
+
