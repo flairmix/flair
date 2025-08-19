@@ -1,25 +1,19 @@
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 WORKDIR /app
 
-#ENV UV_COMPILE_BYTECODE=1
-#ENV UV_LINK_MODE=copy
-#ENV PATH="/app/.venv/bin:$PATH"
+# Сначала только зависимости (для кеша)
+COPY pyproject.toml uv.lock* requirements.txt* ./
 
-RUN apt-get update && apt-get install -y \
+# Устанавливаем системные пакеты и зависимости Python
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential gcc g++ gfortran \
     libopenblas-dev liblapack-dev \
     python3-dev curl pkg-config libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && uv pip install --system --no-cache --requirement requirements.txt
 
+# Теперь копируем только исходный код
 COPY . .
-
-#COPY src/ src/
-#COPY pyproject.toml uv.lock ./
-
-#RUN --mount=type=cache,target=/root/.cache/uv \
-#    uv sync --frozen --no-dev
-
-RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["uvicorn", "src.app.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -33,3 +33,6 @@ dist-ssr
 __pycache__
 
 *.db
+
+uv.lock
+**/uv.lock

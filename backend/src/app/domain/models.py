@@ -11,9 +11,15 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     # Ensure email uniqueness for user identification. Remove `unique=True` if not required.
-    email = Column(String, unique=True, nullable=False)
+    email = Column(String(100), unique=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    posts = relationship("Post", back_populates="user", cascade="all, delete")
+    posts = relationship(
+        "Post", 
+        back_populates="user", 
+        cascade="all, delete-orphan",
+        passive_deletes=True
+        )
+    # nickname = Column(String(32), nullable=False)
 
 
 class Post(Base):
@@ -22,6 +28,10 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     title = Column(Text, nullable=False)
     content = Column(Text, nullable=False)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(
+        Integer, 
+        ForeignKey("users.id", ondelete="CASCADE"), 
+        nullable=False
+        )
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     user = relationship("User", back_populates="posts")

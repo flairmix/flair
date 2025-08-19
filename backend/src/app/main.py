@@ -7,8 +7,9 @@ from .api.auth import register, login
 from .api.routes import generate_route
 from .services.db import init_db
 from .api.post import PostController
-init_db()
+from .api.water_controller import WaterController
 
+init_db()
 
 
 app = Litestar(
@@ -16,6 +17,7 @@ app = Litestar(
                     generate_route, 
                     FileController,
                     PostController,    
+                    WaterController,    
                       ],
     openapi_config=OpenAPIConfig(
         title="Flair API",
