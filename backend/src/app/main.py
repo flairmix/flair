@@ -18,7 +18,7 @@ app = Litestar(
                     FileController,
                     PostController,    
                     WaterController,    
-                      ],
+                    ],
     openapi_config=OpenAPIConfig(
         title="Flair API",
         version="1.0.0"

@@ -28,8 +28,13 @@ def calculate_maximum_hourly_flow(q0_hr, alpha_hr):
     return 0.005 * q0_hr * alpha_hr
 
 
-def calculate_NPhv(qhru, q0_hr, U):
-    return qhru*U / q0_hr
+def calculate_NPhv(qhru, q0_hr, U) -> float:
+    """
+    - qhru: расчетный расход горячей воды, л, потребителем в час наибольшего водопотребления, принимаемый по таблице А.2
+    - q0_hr: базовый расход воды, м³/ч
+    - U (int): Число водопотребителей.
+    """ 
+    return float(qhru*U / q0_hr)
 
 
 def calculate_flow_max_hr(alpha, q0_hr):
