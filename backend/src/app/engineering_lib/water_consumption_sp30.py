@@ -1,5 +1,7 @@
 import pandas as pd
 from scipy.interpolate import interp1d
+from pathlib import Path
+
 
 def calculate_qn(q_tot, U, T, N):
     """
@@ -37,16 +39,23 @@ def calculate_NPhv(qhru, q0_hr, U) -> float:
     return float(qhru*U / q0_hr)
 
 
-def calculate_flow_max_hr(alpha, q0_hr):
-    return 0.005*alpha*q0_hr
-
-
 def calculate_heat_kW(flow_m3_h, delta_t):
     return round(1.163*flow_m3_h*delta_t)
 
 
 def calculate_alpha(np_value, file_path="SP_30_table_5.2.csv"):
-    df =pd.read_csv(file_path, delimiter=';')
+    '''
+    Возвращает:
+    alpha_hr: коэффициент, зависящий от числа приборов и вероятности их использования
+    
+    '''
+    BASE_DIR = Path(__file__).parent
+    CSV_PATH = BASE_DIR / "SP_30_table_5.2.csv"
+
+    try:
+        df =pd.read_csv(CSV_PATH, delimiter=';')
+    except Exception as ex:
+        print(f"Error {ex}")
 
     exact_match = df[df['NP или NPhr'] == np_value]
     if not exact_match.empty:
