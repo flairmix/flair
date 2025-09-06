@@ -1,9 +1,10 @@
-from typing import Annotated
+from typing import Annotated, Literal
 from litestar import Controller, get
 from litestar.exceptions import HTTPException
 from litestar.status_codes import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
 from ..engineering_lib.water_consumption_sp30 import *
+from ..engineering_lib.shevelev_pressure_drop import *
 
 
 class WaterController(Controller):
@@ -105,11 +106,29 @@ class WaterController(Controller):
                 status_code=HTTP_400_BAD_REQUEST,
                 detail=f"Ошибка в параметрах: {str(ve)}"
             )
+        except TypeError as te:
+            raise HTTPException(
+                status_code=HTTP_400_BAD_REQUEST,
+                detail=f"Ошибка типа данных: {str(te)}"
+            )
+        
+    @get("/calculate_shevelev_pressure_drop", status_code=HTTP_200_OK)
+    async def get_calculate_shevelev_pressure_drop(
+        self, 
+        pipe_type: Literal["steel_new", "cast_iron_new", "steel_used", "cast_iron_used"]="steel_new",
+        diameter_mm: float = 50,
+        flow_rate_l_s: float = 1 
+        ) -> float:
+
+        try:
+            return calculate_shevelev_pressure_drop(pipe_type, diameter_mm, flow_rate_l_s)
+        
         except ValueError as ve:
             raise HTTPException(
                 status_code=HTTP_400_BAD_REQUEST,
                 detail=f"Ошибка в параметрах: {str(ve)}"
             )
+
         except TypeError as te:
             raise HTTPException(
                 status_code=HTTP_400_BAD_REQUEST,
