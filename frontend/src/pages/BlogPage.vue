@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white px-10 py-10">
+    <div class="bg-grid min-h-screen flex flex-col bg-[#0D0D0D] text-white font-code items-center justify-start">
     <h1 class="text-3xl font-mono mb-6">Flair : {{ title }} — Публикации</h1>
 
     <div class="grid md:grid-cols-2 gap-6">
@@ -13,12 +13,24 @@
         <p class="text-gray-300">{{ post.description }}</p>
       </div>
     </div>
+    <CalculatorWidget
+      name="Максимальный расход воды"
+      description="Введите параметры для расчета"
+      api-url="https://api.flairbim.com/water/calculate_flow_max_hr"
+      api-response-key="result"
+      :inputs="[
+        { label: 'Alpha', param: 'alpha', description: 'Введите alpha', value: 12 },
+        { label: 'Q0', param: 'q0_hr', description: 'Введите расход Q0', value: 200 }
+      ]"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 import { ref, computed, watch } from 'vue'
+import CalculatorWidget from '../components/calculation/CalculatorWidget.vue'
+
 
 const route = useRoute()
 const posts = ref<any[]>([])
